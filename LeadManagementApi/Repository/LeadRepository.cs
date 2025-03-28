@@ -15,14 +15,14 @@ namespace LeadManagementApi.Repository
 			_context = context;
 		}
 
-		public async Task<List<Lead>> GetLeadsWithNewStatusAsync()
+		public async Task<List<Lead>> GetLeadsWithStatusNewAsync()
 		{
 			return await _context.Leads
 				.Where(x => x.Status == LeadStatus.New)
 				.ToListAsync();
 		}
 
-		public async Task<List<Lead>> GetLeadsWithAcceptedStatusAsync()
+		public async Task<List<Lead>> GetLeadsWithStatusAcceptedAsync()
 		{
 			return await _context.Leads
 				.Where(x => x.Status == LeadStatus.Accepted)

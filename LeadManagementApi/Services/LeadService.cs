@@ -18,19 +18,20 @@ namespace LeadManagementApi.Services
 			_logger = logger;
 		}
 
-		public async Task<LeadResponse> GetLeadsWithNewStatusAsync()
+		public async Task<LeadResponse> GetLeadsWithStatusNewAsync()
 		{
 			List<Lead> leads = new();
 
 			try
 			{
-				leads = await _leadRepository.GetLeadsWithNewStatusAsync();
+				leads = await _leadRepository.GetLeadsWithStatusNewAsync();
 
 				if (!leads.Any())
 				{					
 					return new LeadResponse(MessageConstants.NoLeads, HttpStatusCode.NotFound, leads);
 				}
 
+				_logger.LogInformation(MessageConstants.FinishingProcessToGetAllLeadsWithStatusNew);
 				return new LeadResponse(MessageConstants.AllLeadsWithNewStatusGet, HttpStatusCode.OK, leads);
 			}
 			catch (Exception ex)
@@ -40,19 +41,20 @@ namespace LeadManagementApi.Services
 			}
 		}
 
-		public async Task<LeadResponse> GetLeadsWithAcceptedStatusAsync()
+		public async Task<LeadResponse> GetLeadsWithStatusAcceptedAsync()
 		{
 			List<Lead> leads = new();
 
 			try
 			{
-				leads = await _leadRepository.GetLeadsWithAcceptedStatusAsync();
+				leads = await _leadRepository.GetLeadsWithStatusAcceptedAsync();
 
 				if (!leads.Any())
 				{
 					return new LeadResponse(MessageConstants.NoLeads, HttpStatusCode.NotFound, leads);
 				}
 
+				_logger.LogInformation(MessageConstants.FinishingProcessToGetAllLeadsWithStatusNew);
 				return new LeadResponse(MessageConstants.AllLeadsWithAcceptedStatusGet, HttpStatusCode.OK, leads);
 			}
 			catch (Exception ex)
@@ -78,13 +80,13 @@ namespace LeadManagementApi.Services
 				if (!rowsUpdated)
 				{
 					return new LeadResponse(MessageConstants.LeadAcceptanceFailed, HttpStatusCode.BadRequest, leads);
-				}				
-				
+				}
+
+				_logger.LogInformation(MessageConstants.FinishingLeadAcceptProcess);
 				return new LeadResponse(MessageConstants.LeadAccepted, HttpStatusCode.OK, leads);
 			}
 			catch (Exception ex)
 			{
-
 				_logger.LogError(MessageConstants.AnUnexpectedErrorOccurred, ex.Message, ex.StackTrace, ex.Source, ex.TargetSite);
 				return new LeadResponse(MessageConstants.InternalError, HttpStatusCode.InternalServerError, leads);
 			}
@@ -92,7 +94,25 @@ namespace LeadManagementApi.Services
 
 		public async Task<LeadResponse> DeclineLeadAsync(Lead lead)
 		{
-			throw new NotImplementedException();
+			List<Lead> leads = new();
+
+			try
+			{
+				bool rowsUpdated = await _leadRepository.DeclineLeadAsync(lead);
+
+				if (!rowsUpdated)
+				{
+					return new LeadResponse(MessageConstants.LeadDeclineFailed, HttpStatusCode.BadRequest, leads);
+				}
+
+				_logger.LogInformation(MessageConstants.FinishingLeadDeclineProcess);
+				return new LeadResponse(MessageConstants.LeadDeclined, HttpStatusCode.OK, leads);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(MessageConstants.AnUnexpectedErrorOccurred, ex.Message, ex.StackTrace, ex.Source, ex.TargetSite);
+				return new LeadResponse(MessageConstants.InternalError, HttpStatusCode.InternalServerError, leads);
+			}			
 		}	
 	}
 }
