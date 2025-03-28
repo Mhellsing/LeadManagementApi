@@ -1,5 +1,4 @@
-﻿using LeadManagementApi.Controllers;
-using LeadManagementApi.Messages;
+﻿using LeadManagementApi.Messages;
 using LeadManagementApi.Models;
 using LeadManagementApi.Models.Responses;
 using LeadManagementApi.Repository.Interfaces;
