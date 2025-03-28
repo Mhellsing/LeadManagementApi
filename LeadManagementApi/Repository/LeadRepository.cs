@@ -1,4 +1,5 @@
-﻿using LeadManagementApi.Models;
+﻿using LeadManagementApi.Enums;
+using LeadManagementApi.Models;
 using LeadManagementApi.Repository.Context;
 using LeadManagementApi.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -14,24 +15,39 @@ namespace LeadManagementApi.Repository
 			_context = context;
 		}
 
-		public async Task<List<Lead>> GetLeadsAsync()
+		public async Task<List<Lead>> GetLeadsWithNewStatusAsync()
 		{
-			return await _context.Leads.ToListAsync();
+			return await _context.Leads
+				.Where(x => x.Status == LeadStatus.New)
+				.ToListAsync();
 		}
 
-		public Task<bool> AcceptLeadAsync()
+		public async Task<List<Lead>> GetLeadsWithAcceptedStatusAsync()
 		{
-			throw new NotImplementedException();
+			return await _context.Leads
+				.Where(x => x.Status == LeadStatus.Accepted)
+				.ToListAsync();
 		}
 
-		public Task<bool> DeclineLeadAsync()
+		public async Task<bool> AcceptLeadAsync(Lead lead)
 		{
-			throw new NotImplementedException();
-		}		
+			int rowsUpdated = await _context.Leads
+				.Where(x => x.Id == lead.Id)
+				.ExecuteUpdateAsync(y => y
+					.SetProperty(lead => lead.Status, LeadStatus.Accepted)
+					.SetProperty(lead => lead.Price, lead.Price));
 
-		public void SaveChanges()
+			return rowsUpdated > 0;
+		}
+
+		public async Task<bool> DeclineLeadAsync(Lead lead)
 		{
-			throw new NotImplementedException();
+			int rowsUpdated = await _context.Leads
+				.Where(x => x.Id == lead.Id)
+				.ExecuteUpdateAsync(y => y
+					.SetProperty(lead => lead.Status, LeadStatus.Declined));
+
+			return rowsUpdated > 0;
 		}
 	}
 }

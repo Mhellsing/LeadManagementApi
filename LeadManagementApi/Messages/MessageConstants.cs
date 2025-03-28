@@ -9,13 +9,16 @@
 		public const string OnlyNewLeadsCanBeDeclined = "Only leads with status 'New' can be declined.";
 		public const string InternalError = "An internal error occurred.";
 		public const string NoLeads = "No leads found.";
-		public const string AllLeadsGet = "All leads have been retrieved.";
+		public const string AllLeadsWithNewStatusGet = "All leads with 'New' status have been retrieved.";
+		public const string AllLeadsWithAcceptedStatusGet = "All leads with 'Accepted' status have been retrieved.";
+		public const string LeadIdMustBeGreaterThanZero = "Lead ID must be greater than zero.";
+		public const string LeadAcceptanceFailed = "Lead acceptance failed.";
 		#endregion
 
 		#region Log Messages
 		public const string GetLeads = "Getting all leads.";
-		public const string AcceptLead = "Accepting lead.";
-		public const string DeclineLead = "Declining lead.";
+		public const string InitiatingAcceptLeadProcess = "Initiating the lead acceptance process.";
+		public const string InitiatingDeclineLeadProcess = "Initiating the lead rejection process..";
 		public const string AnUnexpectedErrorOccurred = "An unexpected error occurred: @{Mensagem}. StackTrace: @{StackTrace}. Origem: @{Origem}. Método: @{Método}";
 		#endregion
 
