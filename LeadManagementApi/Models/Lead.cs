@@ -31,32 +31,7 @@ namespace LeadManagementApi.Models
 			PhoneNumber = phoneNumber;
 		}
 
-		public void Accept()
-		{
-			if (Status != LeadStatus.New)
-			{
-				throw new InvalidOperationException(MessageConstants.OnlyNewLeadsCanBeAccepted);
-			}
-
-			if(Price > 500)
-			{
-				ApplyDiscount();
-			}			
-
-			Status = LeadStatus.Accepted;
-		}
-
-		public void Decline()
-		{
-			if (Status != LeadStatus.New)
-			{
-				throw new InvalidOperationException(MessageConstants.OnlyNewLeadsCanBeDeclined);
-			}
-
-			Status = LeadStatus.Declined;
-		}
-
-		private double ApplyDiscount()
+		public virtual double ApplyTenPercentDiscountToLeadPrice()
 		{
 			return Price -= Price * 0.1;
 		}
