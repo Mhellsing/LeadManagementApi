@@ -5,8 +5,8 @@ namespace LeadManagementApi.Services.Interfaces
 {
 	public interface ILeadService
 	{
-		Task<LeadResponse> GetLeadsWithNewStatusAsync();
-		Task<LeadResponse> GetLeadsWithAcceptedStatusAsync();
+		Task<LeadResponse> GetLeadsWithStatusNewAsync();
+		Task<LeadResponse> GetLeadsWithStatusAcceptedAsync();
 		Task<LeadResponse> AcceptLeadAsync(Lead lead);
 		Task<LeadResponse> DeclineLeadAsync(Lead lead);
 	}

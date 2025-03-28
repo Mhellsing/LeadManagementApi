@@ -1,4 +1,5 @@
-﻿using LeadManagementApi.Messages;
+﻿using LeadManagementApi.Enums;
+using LeadManagementApi.Messages;
 using LeadManagementApi.Models;
 using LeadManagementApi.Models.Responses;
 using LeadManagementApi.Services.Interfaces;
@@ -20,11 +21,21 @@ namespace LeadManagementApi.Controllers
 		}
 
 		[HttpGet]
-		[Route("GetLeads")]
-		public async Task<IActionResult> GetLeads()
+		[Route("GetLeadsWithStatusNew")]
+		public async Task<IActionResult> GetLeadsWithStatusNew()
 		{
-			_logger.LogInformation(MessageConstants.GetLeads);
-			LeadResponse response = await _leadService.GetLeadsWithNewStatusAsync();
+			_logger.LogInformation(MessageConstants.InitiatingProcessToGetAllLeadsWithStatusNew);
+			LeadResponse response = await _leadService.GetLeadsWithStatusNewAsync();
+
+			return Ok(response);
+		}
+
+		[HttpGet]
+		[Route("GetLeadsWithStatusAccepted")]
+		public async Task<IActionResult> GetLeadsWithStatusAccepted()
+		{
+			_logger.LogInformation(MessageConstants.InitiatingProcessToGetAllLeadsWithStatusNew);
+			LeadResponse response = await _leadService.GetLeadsWithStatusAcceptedAsync();
 
 			return Ok(response);
 		}
@@ -36,6 +47,11 @@ namespace LeadManagementApi.Controllers
 			if(lead.Id <= 0)
 			{
 				return BadRequest(MessageConstants.LeadIdMustBeGreaterThanZero);
+			}
+
+			if (lead.Status != LeadStatus.New)
+			{
+				return BadRequest(MessageConstants.WrongStatusToAcceptOrDecline);
 			}
 
 			_logger.LogInformation(MessageConstants.InitiatingAcceptLeadProcess);
@@ -50,6 +66,11 @@ namespace LeadManagementApi.Controllers
 			if (lead.Id <= 0)
 			{
 				return BadRequest(MessageConstants.LeadIdMustBeGreaterThanZero);
+			}
+
+			if (lead.Status != LeadStatus.New)
+			{
+				return BadRequest(MessageConstants.WrongStatusToAcceptOrDecline);
 			}
 
 			_logger.LogInformation(MessageConstants.InitiatingDeclineLeadProcess);
