@@ -10,10 +10,16 @@ namespace LeadManagementApi.Extensions
 	{
 		public static IServiceCollection AddServices(this IServiceCollection services) 
 		{
+			#region services
 			services.AddScoped<ILeadService, LeadService>();
 			services.AddScoped<ILeadRepository, LeadRepository>();
+			#endregion
 
+			#region DbContext
 			services.AddDbContext<LeadDbContext>();
+			#endregion
+
+			
 			return services;
 		}
 	}

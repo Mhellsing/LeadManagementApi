@@ -1,5 +1,4 @@
 ﻿using LeadManagementApi.Enums;
-using LeadManagementApi.Messages;
 
 namespace LeadManagementApi.Models
 {
