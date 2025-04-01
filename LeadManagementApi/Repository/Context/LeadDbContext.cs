@@ -22,21 +22,12 @@ namespace LeadManagementApi.Repository.Context
 		{
 			string typeDataBase = _configuration.GetValue<string>("TypeDatabase");
 			string? connectionString = _configuration.GetConnectionString(typeDataBase);
+			optionsBuilder.UseSqlServer(connectionString);
 
 			if (connectionString.IsNullOrEmpty())
 			{
 				_logger.LogError(MessageConstants.ConnectionStringNotConfigured, typeDataBase);
 				throw new InvalidOperationException();
-			}
-
-			switch (typeDataBase)
-			{
-				case "SqlServer":
-					optionsBuilder.UseSqlServer(connectionString);
-					break;
-				case "Postgresql":
-					optionsBuilder.UseNpgsql(connectionString);
-					break;
 			}
 		}
 	}
