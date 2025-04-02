@@ -12,7 +12,7 @@ Utilizamos o ORM Entity Framework e como banco de dados o Sql Server.
 ## Pré-requisitos
 Antes de iniciar confira se tem instalado os seguintes itens:
 - **.Net Sdk (6.0)**
-- **Sql Server**
+- **Sql Server 2022 Developer edition**
 - **Visual Studio Community 2022**
 - **Ferramenta de gerenciamento de banco de dados (ex: Sql Server Management studio)**
 - **Git (Para realizar a clonagem do repositório)**
