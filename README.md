@@ -32,8 +32,14 @@ clicar no ícone da seta verde (no ícone totalmente preenchido de cor verde) co
 | GET    | `/Leads/GetLeadsWithStatusAccepted` | Retorna todas as leads com status: Accepted      |
 | POST   | `/Leads/AcceptLead`                 | Aceita uma lead                                  |
 | POST   | `/Leads/DeclineLead`                | Recusa uma lead                                  |
+### Exemplo de response GET /Leads/GetLeadsWithStatusNew & /Leads/GetLeadsWithStatusAccepted
+{
+  "message": ,  
+  "statusCode": ,  
+  "leads": []  
+}
 
-### Exemplo de requisição POST /Leads/AcceptLead & POST /Leads/DeclineLead
+### Exemplo de request POST /Leads/AcceptLead & POST /Leads/DeclineLead
 {  
   "id": 0,  
   "firstName": "string",  
