@@ -33,7 +33,7 @@ clicar no ícone da seta verde (no ícone totalmente preenchido de cor verde) co
 | POST   | `/Leads/AcceptLead`                 | Aceita uma lead                                  |
 | POST   | `/Leads/DeclineLead`                | Recusa uma lead                                  |
 ### Exemplo de response GET /Leads/GetLeadsWithStatusNew & /Leads/GetLeadsWithStatusAccepted
-{
+{  
   "message": ,  
   "statusCode": ,  
   "leads": []  
