@@ -3,6 +3,12 @@
 Esta api Restful foi desenvolvida em C# com .Net Core 6 e esta nos permite gerenciar leads para uma determinada empresa. 
 Utilizamos o ORM Entity Framework e como banco de dados o Sql Server.  
 
+## Funcionalidades
+- Listagem de leads existentes com status New.
+- Listagem de leads existentes com status Accepted.
+- Confirmação de uma leads apresentada.
+- Recusa de uma lead apresentada.
+
 ## Pré-requisitos
 Antes de iniciar confira se tem instalado os seguintes itens:
 - **.Net Sdk (6.0)**
