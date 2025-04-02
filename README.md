@@ -19,7 +19,7 @@ Antes de iniciar confira se tem instalado os seguintes itens:
 
 ## Instalação
 1. Clone este repositório com o seguinte comando: git clone https://github.com/Mhellsing/LeadManagementApi.git
-2. Configure as variáveis de ambiente no arquivo appsettings.json conforme o exemplo a seguir:
+3. Configure as variáveis de ambiente no arquivo appsettings.json conforme o exemplo a seguir:
    ![image](https://github.com/user-attachments/assets/f14fa201-5a9e-4a3f-8625-908e9ec3d76d)
 
 ## Iniciar o servidor
