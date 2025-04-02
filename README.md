@@ -69,6 +69,7 @@ clicar no ícone da seta verde (no ícone totalmente preenchido de cor verde) co
 ### Tecnologias Utilizadas
 - C#
 - .NET Core 6
+- Visual Studio Community 2022
 - ORM: Entity Framework Core
 - SQL Server
 - Swagger para documentação da api
