@@ -56,15 +56,15 @@ clicar no ícone da seta verde (no ícone totalmente preenchido de cor verde) co
 
 ### Estrutura de Pastas
 - LeadManagementApi
-- Controllers        (Controladores da API)
-- Enums              (Enums para status das leads)
-- Extensions         (Extensão da interface IServiceCollection para registro de serviços e injeção de dependência)
-- Messages           (Armazenar mensagens utilizadas no código)
-- Models             (Modelos de dados)
-- Repository         (Configuração do DbContext e da camada de dados)
-- Services           (Lógica de negócios)
-- appsettings.json   (Configurações da aplicação)
-- Program.cs         (Ponto de entrada da aplicação)
+   - Controllers        (Controladores da API)
+   - Enums              (Enums para status das leads)
+   - Extensions         (Extensão da interface IServiceCollection para registro de serviços e injeção de dependência)
+   - Messages           (Armazenar mensagens utilizadas no código)
+   - Models             (Modelos de dados)
+   - Repository         (Configuração do DbContext e da camada de dados)
+   - Services           (Lógica de negócios)
+   - appsettings.json   (Configurações da aplicação)
+   - Program.cs         (Ponto de entrada da aplicação)
 
 ### Tecnologias Utilizadas
 - C#
