@@ -36,7 +36,7 @@ clicar no ícone da seta verde (no ícone totalmente preenchido de cor verde) co
 {  
   "message": ,  
   "statusCode": ,  
-  "leads": []  
+  "leads": [  ]  
 }
 
 ### Exemplo de request POST /Leads/AcceptLead & POST /Leads/DeclineLead
